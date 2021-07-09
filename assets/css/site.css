@@ -1620,7 +1620,7 @@ body.no-scroll {
 }
 
 .form-wrapper .field-list .field select {
-    margin: 6px 0 4px;
+    margin: 10px 0 4px;
     width: 100%;
     padding: 12px;
     ;
@@ -3719,7 +3719,7 @@ body {
 
 #reservForm .loading {
     display: none;
-    margin:0 0 0 150px;
+    margin-bottom: 20px;
 }
 
 .err-msg {
@@ -3738,6 +3738,10 @@ body {
 }
 
 #btn_prev[disabled] {
+    opacity: 0.5;
+}
+
+#btn_next[disabled] {
     opacity: 0.5;
 }
 
@@ -3764,7 +3768,7 @@ body {
 body {
     display: -webkit-box;
     display: -ms-flexbox;
-    /* display: flex; */
+    background: rgb(235, 231, 231);
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -3782,6 +3786,12 @@ body {
     transform-style: preserve-3d;
     -webkit-perspective: 800px;
     perspective: 800px;
+}
+
+.loading-field {
+    max-width: 60px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .loading .arc {

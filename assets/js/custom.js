@@ -96,6 +96,9 @@ $(document).ready(function() {
             case 1:
                 //loading spinner when data sending
                 $('#reservForm .loading').css('display', 'block');
+                jQuery("html,body").animate({ scrollTop: $(document).height() }, 'slow');
+                $('#btn_prev').prop('disabled', true);
+                $('#btn_next').prop('disabled', true);
                 // get all input values
                 // ajax post for sending mail
                 // console.log('ajax post...');
@@ -115,6 +118,8 @@ $(document).ready(function() {
                     },
                     success: function(res) {
                         $('#reservForm .loading').css('display', 'none');
+                        $('#btn_prev').prop('disabled', false);
+                        $('#btn_next').prop('disabled', false);
                         console.log(res);
                         var result = JSON.parse(res)
                         if (result == true) {
@@ -131,6 +136,8 @@ $(document).ready(function() {
                             $('#btn_next').val('戻る');
                         } else {
                             $('#reservForm .loading').css('display', 'none');
+                            $('#btn_prev').prop('disabled', false);
+                            $('#btn_next').prop('disabled', false);
                             window.alert('Failed to mail send!');
                         }
 
@@ -140,6 +147,8 @@ $(document).ready(function() {
                     error: function(err) {
                         console.log(err);
                         $('#reservForm .loading').css('display', 'none');
+                        $('#btn_prev').prop('disabled', false);
+                        $('#btn_next').prop('disabled', false);
                         window.alert('Failed to mail send!');
                     }
                 });

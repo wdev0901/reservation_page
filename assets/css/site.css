@@ -3719,6 +3719,7 @@ body {
 
 #reservForm .loading {
     display: none;
+    margin-bottom: 20px;
 }
 
 .err-msg {
@@ -3737,6 +3738,10 @@ body {
 }
 
 #btn_prev[disabled] {
+    opacity: 0.5;
+}
+
+#btn_next[disabled] {
     opacity: 0.5;
 }
 

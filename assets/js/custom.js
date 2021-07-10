@@ -101,7 +101,6 @@ $(document).ready(function() {
                 $('#btn_next').prop('disabled', true);
                 // get all input values
                 // ajax post for sending mail
-                // console.log('ajax post...');
                 var inputTime = [];
                 var url = "./vendor/sendmail.php";
                 $('input[name="time[]"]:checked').each(function() {
@@ -111,7 +110,7 @@ $(document).ready(function() {
                     url: url,
                     type: "POST",
                     data: {
-                        inputTime: inputTime,
+                        inputTime: inputTime.toString(),
                         inputNameGanji: inputNameGanji.val(),
                         inputNameKana: inputNameKana.val(),
                         inputPlace: inputPlace.val(),
@@ -120,9 +119,8 @@ $(document).ready(function() {
                         $('#reservForm .loading').css('display', 'none');
                         $('#btn_prev').prop('disabled', false);
                         $('#btn_next').prop('disabled', false);
-                        console.log(res);
-                        var result = JSON.parse(res)
-                        if (result == true) {
+                        var result = res.search("Message has been sent!");
+                            if (result > 0) {
                             //// if sending mail is success
                             g_stage++;
                             var _current = $("li:nth-of-type(4) a").position();
@@ -135,6 +133,7 @@ $(document).ready(function() {
                             $('#btn_prev').css('display', 'none');
                             $('#btn_next').val('戻る');
                         } else {
+                            //// if sending mail failed
                             $('#reservForm .loading').css('display', 'none');
                             $('#btn_prev').prop('disabled', false);
                             $('#btn_next').prop('disabled', false);
@@ -143,7 +142,6 @@ $(document).ready(function() {
 
                     },
                     //// else if failure
-                    // alert('Failed to send!');
                     error: function(err) {
                         console.log(err);
                         $('#reservForm .loading').css('display', 'none');

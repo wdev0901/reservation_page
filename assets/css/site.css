@@ -10,7 +10,8 @@ html {
 }
 
 body {
-    margin: 0
+    margin: 0;
+    justify-content: center;
 }
 
 aside,
@@ -48,7 +49,12 @@ h2.heading-ttl {
     height: auto;
     vertical-align: middle;
     background-repeat: no-repeat;
-    text-align: center
+    text-align: center;
+    background-color: rgb(252, 70, 70);
+    font-size: 14px;
+    color: white;
+    width: 40px;
+    border-radius: 4px;
 }
 
 div.reservation-status {
@@ -1520,16 +1526,6 @@ body.no-scroll {
 .sqs-block-postsbytag .count,
 .sqs-block-postsbymonth .count {
     display: none
-}
-
-.field-error {
-    border-radius: 2px;
-    color: #fff;
-    display: inline-block;
-    font-size: 13px;
-    line-height: 23px;
-    margin: 12px 0;
-    padding: 5px 15px 3px 25px
 }
 
 .form-wrapper .form-submission-text:focus:not([data-focus-visible-added]),
@@ -3615,7 +3611,7 @@ p {
 
 #nav-1 li a {
     position: relative;
-    padding: 0.6em 2em;
+    padding: 0.6em 2.8em;
     font-size: 18px;
     font-weight: bold;
     border: none;
@@ -3626,11 +3622,11 @@ p {
     z-index: 3;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 415px) {
     #nav-1 li a {
         position: relative;
-        padding: 0.6em 2em;
-        font-size: 14px;
+        padding: 0.6em 2.7em !important;
+        font-size: 16px;
         font-weight: bold;
         border: none;
         outline: none;
@@ -3638,6 +3634,42 @@ p {
         display: inline-block;
         text-decoration: none;
         z-index: 3;
+    }
+}
+
+@media screen and (max-width: 463px) {
+    #nav-1 li a {
+        position: relative;
+        padding: 0.6em 2.8em;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        display: inline-block;
+        text-decoration: none;
+        z-index: 3;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #nav-1 li a {
+        position: relative;
+        padding: 0.6em 2em !important;
+        font-size: 14px !important;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        display: inline-block;
+        text-decoration: none;
+        z-index: 3;
+    }
+}
+
+@media screen and (max-width: 1190px) {
+    body {
+        overflow-x: hidden;
     }
 }
 
@@ -3680,7 +3712,7 @@ body {
 
 .progress-menu {
     margin-top: 15px;
-    max-width: 365px;
+    max-width: 450px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -3691,10 +3723,19 @@ body {
     height: 1.25rem;
 }
 
+@media screen and (max-width: 462px) {
+    .form-wrapper .progress-menu {
+        margin-top: 15px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 @media screen and (max-width: 376px) {
     .progress-menu {
         margin-top: 15px;
-        max-width: 280px;
+        max-width: 280px !important;
         margin-left: auto;
         margin-right: auto;
     }
@@ -3705,6 +3746,18 @@ body {
 
 #reservForm #field_error {
     display: none;
+}
+
+#reservForm #confirm-field {
+    display: none;
+}
+
+.confirm-field {
+    color: #ff7b7b;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    width: 100% !important
 }
 
 #reservForm .send-okay {
@@ -3723,7 +3776,7 @@ body {
 }
 
 .err-msg {
-    color: red;
+    color: #f72c2c;
     display: none;
 }
 

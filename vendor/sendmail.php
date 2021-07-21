@@ -31,27 +31,22 @@ try {
     $mail->Password   = 'YourPassword';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->CharSet    = PHPMailer::CHARSET_UTF8;  
 
     //Recipients
-    $mail->setFrom('From@example.com', 'Mailer');
-    $mail->addAddress('To@example.com', 'Mailer');     //Add a recipient
-    // $mail->addAddress('ellen@example.com');               //Name is optional
+    $mail->setFrom('From@example.com', 'ジーラボ株式会社');
+    $mail->addAddress('To@example.com', 'ジーラボ株式会社');     //Add a recipient
     $mail->addReplyTo('info@example.com', 'Information');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
-
-    //Attachments
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'WEB予約フォーム';
-    $mail->Body    = '<b>名字（漢字): </b>' . $inputNameGanji . '<br><b>名前(フリガナ): </b>' . $inputNameKana . '<br><b>予約希望場所: </b>' . $inputPlace . '<br><b>予約希望時間: </b>' . $inputTime;
-    $mail->AltBody = '名字（漢字): ' . $inputNameGanji . '名前(フリガナ): ' . $inputNameKana . '予約希望場所: ' . $inputPlace . '予約希望時間: ' . $inputTime;
-
+    $mail->Body    = '<h1>イベントの予約申し込みがありました。</h1><p> <h2>下記の通り、イベント予約の申し込みがありました。<br>ご確認の上ご対応の程よろしくお願いいたします。</h2><p> <h3><b>名字（漢字): </b>' . $inputNameGanji . '</h3><p><h3><b>名前(フリガナ): </b>' . $inputNameKana . '</h3><p><h3><b>予約希望場所: </b>' . $inputPlace . '</h3><p><h3><b>予約希望時間: </b>' . $inputTime . '</h3>';
+    $mail->AltBody = 'イベントの予約申し込みがありました。 下記の通り、イベント予約の申し込みがありました。ご確認の上ご対応の程よろしくお願いいたします。 名字（漢字): ' . $inputNameGanji . '名前(フリガナ): ' . $inputNameKana . '予約希望場所: ' . $inputPlace . '予約希望時間: ' . $inputTime;
     $mail->send();
+
     echo 'Message has been sent!';
+       
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error:";
 }

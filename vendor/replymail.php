@@ -12,11 +12,8 @@ require './phpmailer/phpmailer/src/SMTP.php';
 //Load Composer's autoloader
 require './autoload.php';
 
-//get MailData
-$inputNameGanji = $_POST['inputNameGanji'];
-$inputNameKana = $_POST['inputNameKana'];
-$inputPlace = $_POST['inputPlace'];
-$inputTime = $_POST['inputTime'];
+//get response Email
+$replyEmail = $_POST['email'];
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -35,7 +32,7 @@ try {
 
     //Recipients
     $mail->setFrom('From@example.com', 'ジーラボ株式会社');
-    $mail->addAddress('To@example.com', 'ジーラボ株式会社');     //Add a recipient
+    $mail->addAddress($replyEmail, 'ジーラボ株式会社');     //Add a recipient
     $mail->addReplyTo('info@example.com', 'Information');
    
     //Content

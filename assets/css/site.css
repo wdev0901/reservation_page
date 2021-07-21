@@ -57,6 +57,19 @@ h2.heading-ttl {
     border-radius: 4px;
 }
 
+.iconElems {
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-color: #536bb8;
+    font-size: 14px;
+    color: white;
+    width: 40px;
+    border-radius: 4px;
+}
+
 div.reservation-status {
     text-align: center;
     position: relative;

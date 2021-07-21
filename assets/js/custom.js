@@ -43,7 +43,16 @@ $(document).ready(function() {
         var form_data = new FormData($('#reservForm')[0]);
         var inputNameGanji = $('#first_name');
         var inputNameKana = $('#second_name');
+        var inputEmail = $('#email_address');
         var inputPlace = $('#reserve_place');
+        var Email = inputEmail.val();
+        if(Email) {
+            const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(!re.test(Email)){
+               $('#email_error').css('display', 'block');
+               return;
+            } 
+        }
 
         switch (g_stage) {
             case 0:
@@ -57,10 +66,12 @@ $(document).ready(function() {
                     //continue hide all err-msgs
                     $('#first_name_error').css('display', 'none');
                     $('#second_name_error').css('display', 'none');
+                    $('#email_error').css('display', 'none');
                     $('#time_error').css('display', 'none');
                     // make inputs disabled
                     inputNameGanji.prop('disabled', true);
                     inputNameKana.prop('disabled', true);
+                    inputEmail.prop('disabled', true);
                     inputPlace.prop('disabled', true);
                     $('#time_field input[type=checkbox]').prop('disabled', true);
                     // hide `必須` labels
@@ -133,7 +144,7 @@ $(document).ready(function() {
                             $("#nav-1 .slide1").css({
                                 left: +_current.left
                             });
-                            $.post(reply);
+                            $.post(reply, {email: Email});
 
                             $('#reservForm .field-list').css('display', 'none');
                             $('#reservForm .send-okay').css('display', 'block');
@@ -174,6 +185,7 @@ $(document).ready(function() {
     $("#btn_prev").on("click", function() {
         var inputNameGanji = $('#first_name');
         var inputNameKana = $('#second_name');
+        var inputEmail = $('#email_address');
         var inputPlace = $('#reserve_place');
 
         switch (g_stage) {
@@ -184,6 +196,7 @@ $(document).ready(function() {
                 // make inputs re-enabled
                 inputNameGanji.prop('disabled', false);
                 inputNameKana.prop('disabled', false);
+                inputEmail.prop('disabled', false);
                 inputPlace.prop('disabled', false);
                 $('#time_field input[type=checkbox]').prop('disabled', false);
                 // move bubble label

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var init = function() {
-        $(window).scrollTop(0);
+        jQuery("html,body").animate({ scrollTop: 0 }, 'slow');
         $("input:text:visible:first").focus();
 
         var currentWidth = $("#nav-1")
@@ -50,7 +50,11 @@ $(document).ready(function() {
                 if (inputNameGanji.val() && inputNameKana.val() && inputPlace.val() && form_data.has('time[]')) {
                     g_stage++;
                     // hide all err-msgs
+                    jQuery("html,body").animate({ scrollTop: 300 }, 'slow');
                     $('#reservForm #field_error').css('display', 'none');
+                    //show message input field confirm 
+                    $('#reservForm #confirm-field').css('display', 'block');
+                    //continue hide all err-msgs
                     $('#first_name_error').css('display', 'none');
                     $('#second_name_error').css('display', 'none');
                     $('#time_error').css('display', 'none');
@@ -103,6 +107,7 @@ $(document).ready(function() {
                 // ajax post for sending mail
                 var inputTime = [];
                 var url = "./vendor/sendmail.php";
+                var reply = "./vendor/replymail.php";
                 $('input[name="time[]"]:checked').each(function() {
                     inputTime.push($(this).val());
                 });
@@ -117,6 +122,7 @@ $(document).ready(function() {
                     },
                     success: function(res) {
                         $('#reservForm .loading').css('display', 'none');
+                        $('#reservForm #confirm-field').css('display', 'none');
                         $('#btn_prev').prop('disabled', false);
                         $('#btn_next').prop('disabled', false);
                         var result = res.search("Message has been sent!");
@@ -127,6 +133,7 @@ $(document).ready(function() {
                             $("#nav-1 .slide1").css({
                                 left: +_current.left
                             });
+                            $.post(reply);
 
                             $('#reservForm .field-list').css('display', 'none');
                             $('#reservForm .send-okay').css('display', 'block');
@@ -135,6 +142,7 @@ $(document).ready(function() {
                         } else {
                             //// if sending mail failed
                             $('#reservForm .loading').css('display', 'none');
+                            $('#reservForm #confirm-field').css('display', 'none');
                             $('#btn_prev').prop('disabled', false);
                             $('#btn_next').prop('disabled', false);
                             window.alert('Failed to mail send!');
@@ -145,6 +153,7 @@ $(document).ready(function() {
                     error: function(err) {
                         console.log(err);
                         $('#reservForm .loading').css('display', 'none');
+                        $('#reservForm #confirm-field').css('display', 'none');
                         $('#btn_prev').prop('disabled', false);
                         $('#btn_next').prop('disabled', false);
                         window.alert('Failed to mail send!');

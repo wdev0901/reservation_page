@@ -1,4 +1,6 @@
-# WEB予約フォーム
+# WEB予約フォーム | PHP, HTML, CSS, jQuery
+
+![WEB予約フォーム](top.png)
 ## 1.Vendor/sendmail.php
 * Server settings <br>
 
@@ -24,4 +26,7 @@
 * Recipients <br>
 
         $mail->setFrom('From@example.com', 'ジーラボ株式会社');     //予約申し込みをするユーザーのメールアドレス【任意】
+
+## Author: Dmitri Belov
+&copy; 2021 WWd Team, All Rights Reserved.
 

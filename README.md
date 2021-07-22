@@ -13,7 +13,6 @@
         $mail->addReplyTo('info@example.com', 'Information');     //に返信メールを追加。
 
 ## 2.Vendor/replymail.php
-
 ### ▼以下の項目を除いた他の項目は、前と同じように設定します。
 
 * Server settings <br>
